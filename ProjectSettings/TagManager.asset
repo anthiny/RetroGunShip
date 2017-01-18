@@ -50,3 +50,6 @@ TagManager:
   - name: Object
     uniqueID: 1565893811
     locked: 0
+  - name: UiPanel
+    uniqueID: 3345175819
+    locked: 0
