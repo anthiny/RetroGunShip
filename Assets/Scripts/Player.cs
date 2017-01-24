@@ -28,7 +28,7 @@ public class Player : MonoBehaviour {
 					target.z = 0;
 					Debug.Log("touch" + target + "// flight" + transform.position);
 					if (!TouchCheck(target)){
-						Debug.Log("check");
+						//Debug.Log("check");
 						isLeft = false;
 						isRight = false;
 						gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0, 0);
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 					Vector2 direction = target - transform.position;
 					direction.Normalize();
 					if(target.x > transform.position.x){
-						Debug.Log("ani");
+						//Debug.Log("ani");
 						isLeft = true;
 						isRight = false;
 					}

@@ -35,10 +35,11 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void Restart(){
-		SceneManager.LoadScene ("InGame");
+		SceneManager.LoadScene ("Scene/InGame");
 	}
 
 	public void MainMenu(){
+		SceneManager.LoadScene("Scene/Main");
 	}
 
 	public void Quit(){
