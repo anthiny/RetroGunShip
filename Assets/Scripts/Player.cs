@@ -124,15 +124,18 @@ public class Player : MonoBehaviour {
 	}
 	public void Damage(int damage){
 		animator.SetTrigger("Heat");
+		//SoundManager.instance.mainSwitch("damagedSound", true);
 		curHp = curHp - damage;
 		if(curHp <= 0){
+			ScoreManager.instance.SetScore(0);
 			Die();
 		}
 	}
 	void Die(){
 		//Restart
+		//SoundManager.instance.mainSwitch("inGameBackGround", false);
 		ScoreManager.instance.SaveBestScore();
-		SceneManager.LoadScene("InGame");
+		PopUpManager.instance.ShowResultPopUp();
 	}
 
 }

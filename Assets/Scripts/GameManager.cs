@@ -3,36 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMaster : MonoBehaviour {
-
-	private float lastUpdate;
-	private int score;
-	private int objectCnt;
-	public Text pointsText;
+public class GameManager : MonoBehaviour {
+	private float score;
+	//private int objectCnt;
 	public GameObject[] gameObjectList;
 	public float[] xPointList;
 	void Start(){
+		//SoundManager.instance.mainSwitch("inGameBackGround", true);
+		Time.timeScale = 1;
 		score = 0;
-		objectCnt = 0;
 	} 
 	void Update(){
-		if(Time.time - lastUpdate >= 1f){
-			lastUpdate = Time.time;
-			score = score + 1;
-			objectCnt = objectCnt + 1;
-
-			if (objectCnt == 3){
-				//LoadingObject("meteroite");
-				objectCnt = 0;
-			}
-
-			DisplayScore(score);
-		}
+		score = score + (Time.deltaTime * 1);
+		DisplayScore((int)score);
 	}
 
 	public void DisplayScore(int score){
 		ScoreManager.instance.SetScore(score);
-		pointsText.text = ("Score: " + score);
 	}
 
 	private void LoadingObject(string objectName){

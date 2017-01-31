@@ -20,19 +20,27 @@ public class FontGenerator : MonoBehaviour {
 		}
 	}
 
-	public void makeFont(GameObject parentObjcet, string text, float spacing, bool isButtonText, float size){
+	public void makeFont(GameObject parentObjcet, string text, float spacing, bool onCanvas, float size){
 		float defaultSpacing = 0;
 		for(int i=0; i<text.Length;i++){
 			GameObject customChar = new GameObject("char" + i.ToString());
-			customChar.transform.parent = parentObjcet.transform;
+			customChar.transform.SetParent(parentObjcet.transform, false);
 			customChar.transform.position = new Vector3(parentObjcet.transform.position.x + defaultSpacing, parentObjcet.transform.position.y, parentObjcet.transform.position.z);
 			defaultSpacing = defaultSpacing + spacing;
+
 			int askiiCode = (int)text[i];
-			askiiCode = askiiCode - 97;
-			if (askiiCode == -65){
+
+			if (askiiCode == 32){
 				askiiCode = 36;
 			}
-			if (isButtonText){
+			else if(askiiCode > 96 && askiiCode < 123){
+				askiiCode = askiiCode - 97;
+			}
+			else if(askiiCode > 47 && askiiCode < 58){
+				askiiCode = askiiCode - 22;
+			}
+			
+			if (onCanvas){
 				customChar.AddComponent<LayoutElement>();
 				customChar.AddComponent<Image>().sprite = fontSet[askiiCode];
 				customChar.GetComponent<RectTransform>().sizeDelta = new Vector2(customChar.GetComponent<RectTransform>().rect.width*size, customChar.GetComponent<RectTransform>().rect.height*size);
@@ -40,6 +48,7 @@ public class FontGenerator : MonoBehaviour {
 			else{
 				customChar.AddComponent<SpriteRenderer>().sprite = fontSet[askiiCode];
 				customChar.GetComponent<SpriteRenderer>().sortingLayerName = "UiPanel";
+				customChar.GetComponent<SpriteRenderer>().sortingOrder = 1;
 			}
 		}
 	}

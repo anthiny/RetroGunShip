@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour {
 
 	public void StartButton(){
+		SoundManager.instance.mainSwitch("mainMenu", false);
 		SceneManager.LoadScene("Scene/InGame");
 	}
 

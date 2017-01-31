@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 	private static ScoreManager _instance = null;
 	private int score = 0;
 	private int maxScore = 0;
+	public Text scoreText;
+	bool isEnd = false;
 	public static ScoreManager instance{
 		get{
 			if(!_instance){
@@ -16,12 +19,14 @@ public class ScoreManager : MonoBehaviour {
 					_instance = container.AddComponent(typeof(ScoreManager)) as ScoreManager;
 				}
 			}
-
 			return _instance;
 		}
 	}
 	public void SetScore(int value){
-		score = value;
+		if(!isEnd){
+			score = value;
+			scoreText.text = "Score: " + value.ToString();
+		}
 	}
 	public int GetScore(){
 		return score;

@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class FontInfo : MonoBehaviour {
 	public string text;
 	public float spacing;
-	public bool isButtonText = false;
+	public bool onTheCavas = false;
 	public float fontSize = 1;
 	// Use this for initialization
-	void Start () {
-		FontGenerator.instance.makeFont(this.gameObject, text.ToLower(),spacing, isButtonText, fontSize);
+
+	public void FontLoad(){
+		FontGenerator.instance.makeFont(this.gameObject, text.ToLower(),spacing, onTheCavas, fontSize);
 	}
 }
