@@ -6,6 +6,7 @@ public class FontGenerator : MonoBehaviour {
 	public Sprite[] fontSet;
 	// Use this for initialization
 	private static FontGenerator _instance = null;
+	public Color[] colorList;
 	public static FontGenerator instance{
 		get{
 			if(!_instance){
@@ -20,7 +21,7 @@ public class FontGenerator : MonoBehaviour {
 		}
 	}
 
-	public void makeFont(GameObject parentObjcet, string text, float spacing, bool onCanvas, float size){
+	public void makeFont(GameObject parentObjcet, string text, float spacing, bool onCanvas, float size, int colorIndex){
 		float defaultSpacing = 0;
 		for(int i=0; i<text.Length;i++){
 			GameObject customChar = new GameObject("char" + i.ToString());
@@ -43,6 +44,9 @@ public class FontGenerator : MonoBehaviour {
 			if (onCanvas){
 				customChar.AddComponent<LayoutElement>();
 				customChar.AddComponent<Image>().sprite = fontSet[askiiCode];
+				if(colorIndex != 0){
+					customChar.GetComponent<Image>().color = colorList[colorIndex];
+				}
 				customChar.GetComponent<RectTransform>().sizeDelta = new Vector2(customChar.GetComponent<RectTransform>().rect.width*size, customChar.GetComponent<RectTransform>().rect.height*size);
 			}
 			else{

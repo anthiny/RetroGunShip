@@ -33,7 +33,8 @@ public class PopUpManager : MonoBehaviour {
 	}
 
 	public void ShowResultPopUp(){
-		PopUpList[1].GetComponentInChildren<ResultPopUp>().ShowScoreInfo();
+		SoundManager.instance.mainSwitch("inGameBackGround",false);
+		PopUpList[1].GetComponentInChildren<ResultPopUpController>().ShowScoreInfo();
 		Time.timeScale = 0;
 		PopUpList[1].SetActive(true);
 	}

@@ -7,6 +7,7 @@ public class ButtonManager : MonoBehaviour {
 
 	public void StartButton(){
 		SoundManager.instance.mainSwitch("mainMenu", false);
+		SoundManager.instance.mainSwitch("inGameBackGround",true);
 		SceneManager.LoadScene("Scene/InGame");
 	}
 

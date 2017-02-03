@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResultPopUp : MonoBehaviour {
+public class ResultPopUpController : MonoBehaviour {
 	public GameObject resultTitleText;
 	public GameObject scoreText;
 	public GameObject bestScoreText;
 	public GameObject score;
 	public GameObject bestScore;
+	public GameObject backToMain;
 	// Use this for initialization
 	void Start () {
 		resultTitleText.GetComponentInChildren<FontInfo>().FontLoad();
 		scoreText.GetComponentInChildren<FontInfo>().FontLoad();
 		bestScoreText.GetComponentInChildren<FontInfo>().FontLoad();
+		backToMain.GetComponentInChildren<FontInfo>().FontLoad();
 		this.gameObject.SetActive(false);
 	}
 	public void ShowScoreInfo(){
@@ -24,6 +26,7 @@ public class ResultPopUp : MonoBehaviour {
 	}
 	public void GoToMain(){
 		SceneManager.LoadScene(0);
+		SoundManager.instance.mainSwitch("mainMenu", true);
 	}
 
 }

@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour {
 	public static SoundManager instance{
 		get{
 			if(!_instance){
-				_instance = FindObjectOfType(typeof(SoundManager)) as SoundManager;
+				_instance = FindObjectOfType<SoundManager>() as SoundManager;
 				if(!_instance){
 					GameObject container = new GameObject();
 					container.name = "SoundManagerContainer";

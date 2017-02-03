@@ -8,9 +8,11 @@ public class FontInfo : MonoBehaviour {
 	public float spacing;
 	public bool onTheCavas = false;
 	public float fontSize = 1;
+	public int colorIndex = 0;
+	public string[] color = {"default", "black", "white", "red"};	
 	// Use this for initialization
 
 	public void FontLoad(){
-		FontGenerator.instance.makeFont(this.gameObject, text.ToLower(),spacing, onTheCavas, fontSize);
+		FontGenerator.instance.makeFont(this.gameObject, text.ToLower(),spacing, onTheCavas, fontSize, colorIndex);
 	}
 }

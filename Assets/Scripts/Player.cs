@@ -23,12 +23,11 @@ public class Player : MonoBehaviour {
 		
 		if (Input.touchCount > 0){
 				Touch touch = Input.GetTouch(0);
+
 				if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved){
 					Vector3 target = Camera.main.ScreenToWorldPoint(touch.position);
 					target.z = 0;
-					Debug.Log("touch" + target + "// flight" + transform.position);
 					if (!TouchCheck(target)){
-						//Debug.Log("check");
 						isLeft = false;
 						isRight = false;
 						gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0, 0);
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour {
 					Vector2 direction = target - transform.position;
 					direction.Normalize();
 					if(target.x > transform.position.x){
-						//Debug.Log("ani");
 						isLeft = true;
 						isRight = false;
 					}
@@ -56,7 +54,7 @@ public class Player : MonoBehaviour {
 					isLeft = false;
 					isRight = false;
 				}
-			}
+		}
 
 		if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer){
 			
@@ -124,16 +122,15 @@ public class Player : MonoBehaviour {
 	}
 	public void Damage(int damage){
 		animator.SetTrigger("Heat");
-		//SoundManager.instance.mainSwitch("damagedSound", true);
+		SoundManager.instance.mainSwitch("damagedSound", true);
 		curHp = curHp - damage;
 		if(curHp <= 0){
-			ScoreManager.instance.SetScore(0);
 			Die();
 		}
 	}
 	void Die(){
 		//Restart
-		//SoundManager.instance.mainSwitch("inGameBackGround", false);
+		SoundManager.instance.mainSwitch("inGameBackGround", false);
 		ScoreManager.instance.SaveBestScore();
 		PopUpManager.instance.ShowResultPopUp();
 	}
