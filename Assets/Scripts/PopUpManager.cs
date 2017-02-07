@@ -38,6 +38,5 @@ public class PopUpManager : MonoBehaviour {
 		Time.timeScale = 0;
 		PopUpList[1].SetActive(true);
 	}
-
 	
 }

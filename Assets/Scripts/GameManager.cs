@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject[] gameObjectList;
 	public float[] xPointList;
 	void Start(){
-		//SoundManager.instance.mainSwitch("inGameBackGround", true);
+		SoundManager.instance.mainSwitch("inGameBackGround", true);
 		Time.timeScale = 1;
 		score = 0;
 	} 

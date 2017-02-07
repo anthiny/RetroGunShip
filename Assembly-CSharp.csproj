@@ -46,13 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BackGround.cs" />
      <Compile Include="Assets\Scripts\BulletAi.cs" />
      <Compile Include="Assets\Scripts\ButtonManager.cs" />
+     <Compile Include="Assets\Scripts\DestroyArea.cs" />
      <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
      <Compile Include="Assets\Scripts\EnemyAi.cs" />
      <Compile Include="Assets\Scripts\FontGenerator.cs" />
      <Compile Include="Assets\Scripts\FontInfo.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\KillAnimation.cs" />
      <Compile Include="Assets\Scripts\ManagerSummoner.cs" />
      <Compile Include="Assets\Scripts\ObjectMoving.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
