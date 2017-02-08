@@ -46,26 +46,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BackGround.cs" />
-     <Compile Include="Assets\Scripts\BulletAi.cs" />
-     <Compile Include="Assets\Scripts\ButtonManager.cs" />
+     <Compile Include="Assets\Scripts\Ai\BossAi.cs" />
+     <Compile Include="Assets\Scripts\Ai\BulletAi.cs" />
+     <Compile Include="Assets\Scripts\Ai\Damaged.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyAi.cs" />
+     <Compile Include="Assets\Scripts\Controller\GameMasterController.cs" />
+     <Compile Include="Assets\Scripts\Controller\MainMenuButtonController.cs" />
+     <Compile Include="Assets\Scripts\Controller\PausePopUpController.cs" />
+     <Compile Include="Assets\Scripts\Controller\ResultPopUpController.cs" />
+     <Compile Include="Assets\Scripts\Controller\ScoreController.cs" />
      <Compile Include="Assets\Scripts\DestroyArea.cs" />
-     <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
-     <Compile Include="Assets\Scripts\EnemyAi.cs" />
-     <Compile Include="Assets\Scripts\FontGenerator.cs" />
-     <Compile Include="Assets\Scripts\FontInfo.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+     <Compile Include="Assets\Scripts\Font\FontInfo.cs" />
+     <Compile Include="Assets\Scripts\Font\textLoader.cs" />
+     <Compile Include="Assets\Scripts\Item\DoubleMissile.cs" />
+     <Compile Include="Assets\Scripts\Item\Shield.cs" />
      <Compile Include="Assets\Scripts\KillAnimation.cs" />
-     <Compile Include="Assets\Scripts\ManagerSummoner.cs" />
-     <Compile Include="Assets\Scripts\ObjectMoving.cs" />
-     <Compile Include="Assets\Scripts\PauseMenu.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PopUpManager.cs" />
-     <Compile Include="Assets\Scripts\ResultPopUpController.cs" />
-     <Compile Include="Assets\Scripts\ScoreManager.cs" />
-     <Compile Include="Assets\Scripts\SoundManager.cs" />
-     <Compile Include="Assets\Scripts\textLoader.cs" />
+     <Compile Include="Assets\Scripts\Manager\DontDestroyOnLoad.cs" />
+     <Compile Include="Assets\Scripts\Manager\FontManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\ManagerSummoner.cs" />
+     <Compile Include="Assets\Scripts\Manager\PopUpManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\Movement\BackGround.cs" />
+     <Compile Include="Assets\Scripts\Movement\ObjectMoving.cs" />
+     <Compile Include="Assets\Scripts\Movement\Player.cs" />
      <None Include="Assets\stg_basic_pics\document_and_picturelist\readme.txt" />
+     <None Include="Assets\enemypack001sepia\document_and_picturelist\readme.txt" />
      <None Include="Assets\spritefont_and_other\document_and_picturelist\readme.txt" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
