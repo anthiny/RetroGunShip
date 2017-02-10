@@ -8,7 +8,7 @@ public class DestroyArea : MonoBehaviour {
 		//Get the items layer name
 		string tagName = c.gameObject.tag;
 		//If it is an enemy...
-		if (tagName == "Bullet" || tagName == "Item")
+		if (tagName == "Bullet" || tagName == "Item" || tagName == "Enemy")
 		{
 			Destroy(c.gameObject);
 		}

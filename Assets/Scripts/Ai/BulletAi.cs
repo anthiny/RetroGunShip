@@ -14,7 +14,7 @@ public class BulletAi : MonoBehaviour {
 					col.gameObject.GetComponent<Player>().Damage(damage);
 					break;
 				case "Enemy":
-					col.gameObject.GetComponent<Damaged>().Damage(damage);
+					col.gameObject.GetComponent<EnemyBodySet>().Damage(damage);
 					break;
 			}
 			Destroy(gameObject);

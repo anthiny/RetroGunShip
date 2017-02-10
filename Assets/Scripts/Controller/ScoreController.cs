@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class ScoreController : MonoBehaviour {
 	private static ScoreController _instance = null;
 	private int score = 0;
+	private float cnt = 0.0f;
 	private int maxScore = 0;
 	public Text scoreText;
-	bool isEnd = false;
+	public bool isGameStart = false;
+
+	void Update(){
+		if(isGameStart){
+			cnt = cnt + Time.timeScale;
+		}
+	}
 	public static ScoreController instance{
 		get{
 			if(!_instance){
@@ -22,11 +29,13 @@ public class ScoreController : MonoBehaviour {
 			return _instance;
 		}
 	}
+
+	public void DisplayScore(){
+		scoreText.text = "Score: "+ score.ToString();
+	}
 	public void SetScore(int value){
-		if(!isEnd){
-			scoreText.text = "Score: "+ value.ToString();
-			score = value;
-		}
+		score = value;
+		DisplayScore();
 	}
 	public int GetScore(){
 		return score;
@@ -43,5 +52,10 @@ public class ScoreController : MonoBehaviour {
 	public int getBestScore(){
 		SaveBestScore();
 		return maxScore;
+	}
+	
+	public void addScore(int value){
+		score = score + value;
+		DisplayScore();
 	}
 }

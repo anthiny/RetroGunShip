@@ -46,10 +46,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Ai\BossAi.cs" />
      <Compile Include="Assets\Scripts\Ai\BulletAi.cs" />
-     <Compile Include="Assets\Scripts\Ai\Damaged.cs" />
-     <Compile Include="Assets\Scripts\Ai\EnemyAi.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPattern01.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternBoss01.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternParent.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyBodySet.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePattern01.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePatternBoss01.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePatternParent.cs" />
      <Compile Include="Assets\Scripts\Controller\GameMasterController.cs" />
      <Compile Include="Assets\Scripts\Controller\MainMenuButtonController.cs" />
      <Compile Include="Assets\Scripts\Controller\PausePopUpController.cs" />

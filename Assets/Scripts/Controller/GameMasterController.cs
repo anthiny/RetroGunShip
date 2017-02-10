@@ -4,19 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameMasterController : MonoBehaviour {
-	private float score;
 	//private int objectCnt;
 	public GameObject[] gameObjectList;
 	public float[] xPointList;
 	void Start(){
 		SoundManager.instance.mainSwitch("inGameBackGround", true);
 		Time.timeScale = 1;
-		score = 0;
 	} 
-	void Update(){
-		score = score + (Time.deltaTime * 1);
-		DisplayScore((int)score);
-	}
 
 	public void DisplayScore(int score){
 		ScoreController.instance.SetScore(score);

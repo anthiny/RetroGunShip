@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9579658}
   - component: {fileID: 50587240347321378}
   - component: {fileID: 61192188024298494}
+  - component: {fileID: 114852754539291206}
   m_Layer: 0
   m_Name: enemybulletanim005
   m_TagString: Bullet
@@ -129,3 +130,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
+--- !u!114 &114852754539291206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e9f4cfbf50e4b928be134e02b067dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  damage: 1
+  h: 0
+  w: 0
