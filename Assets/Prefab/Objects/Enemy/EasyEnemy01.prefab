@@ -123,11 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5bc5684b15304981a7821fd8f0e0703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHp: 1
+  maxHp: 1
+  curHp: 0
+  score: 100
   itemList: []
   effectList:
   - {fileID: 193854, guid: 5d0a772d6c97c384ab1272aa7554ea27, type: 2}
-  - {fileID: 139422, guid: b0c58804b6a5123429b01d07b4620cea, type: 2}
+  - {fileID: 193854, guid: 5d0a772d6c97c384ab1272aa7554ea27, type: 2}
   attactPattern: {fileID: 114350391986053706}
   movePattern: {fileID: 114642587953871122}
 --- !u!114 &114642587953871122

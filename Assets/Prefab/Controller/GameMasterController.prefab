@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4906143921795510}
   - component: {fileID: 114068332864214540}
+  - component: {fileID: 114268548132045302}
   m_Layer: 0
   m_Name: GameMasterController
   m_TagString: Untagged
@@ -51,9 +52,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975ef92ee5767481cb083349a38506b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectList:
-  - {fileID: 1780421286959274, guid: 1819e6a16764f4f2297795d67c70a42d, type: 2}
-  xPointList:
-  - -3
-  - 0
-  - 2.4
+  spawnInterval: 1
+  spawnTimer: 0
+--- !u!114 &114268548132045302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023427312057896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca38987c81c46429291608b0cf6940d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyList:
+  - {fileID: 1143644511310466, guid: 2f8cd9fad33c84de8b57290c65ef45ad, type: 2}
+  enemyBossList:
+  - {fileID: 1425987794623468, guid: 41a5e02f2e0d14403b8170c1d0fb5365, type: 2}

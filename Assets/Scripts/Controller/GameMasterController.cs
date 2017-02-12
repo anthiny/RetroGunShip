@@ -4,29 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameMasterController : MonoBehaviour {
-	//private int objectCnt;
-	public GameObject[] gameObjectList;
-	public float[] xPointList;
+	public float spawnInterval;
+	public float spawnTimer;
+	public int bossScore = 1000;
 	void Start(){
 		SoundManager.instance.mainSwitch("inGameBackGround", true);
 		Time.timeScale = 1;
-	} 
-
-	public void DisplayScore(int score){
-		ScoreController.instance.SetScore(score);
 	}
-
-	private void LoadingObject(string objectName){
-		switch(objectName){
-			case "meteroite":
-				for(int i = 0; i<3; i++){
-					GameObject gameObjectClone;
-					gameObjectClone = Instantiate(gameObjectList[0], new Vector3(xPointList[i], Random.Range(8.5f,12f), 0), Quaternion.identity) as GameObject;
-					Vector2 direction = new Vector3(0f,-2.5f,0f) - transform.position;
-					direction.x = 0;
-					gameObjectClone.GetComponent<Rigidbody2D>().velocity = direction;
-				}
-				break;
+	void Update(){
+		spawnTimer = spawnTimer + Time.deltaTime;
+		if(spawnTimer >= spawnInterval){
+			if(ScoreController.instance.GetScore()>=bossScore){
+				this.GetComponent<EnemySpawner>().SpawnEnemyBoss(1);
+				bossScore = bossScore*3;
+			}
+			else{
+				this.GetComponent<EnemySpawner>().SpawnEnemy(1);
+			}
+			spawnTimer = 0;
 		}
 	}
+
 }
