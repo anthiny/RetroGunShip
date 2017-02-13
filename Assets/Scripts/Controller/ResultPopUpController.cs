@@ -19,9 +19,9 @@ public class ResultPopUpController : MonoBehaviour {
 		this.gameObject.SetActive(false);
 	}
 	public void ShowScoreInfo(){
-		score.GetComponentInChildren<FontInfo>().text = (ScoreController.instance.GetScore()).ToString();
+		score.GetComponentInChildren<FontInfo>().text = (ScoreModel.instance.GetScore()).ToString();
 		score.GetComponentInChildren<FontInfo>().FontLoad();
-		bestScore.GetComponentInChildren<FontInfo>().text = (ScoreController.instance.getBestScore()).ToString();
+		bestScore.GetComponentInChildren<FontInfo>().text = (ScoreModel.instance.getBestScore()).ToString();
 		bestScore.GetComponentInChildren<FontInfo>().FontLoad();
 	}
 	public void GoToMain(){

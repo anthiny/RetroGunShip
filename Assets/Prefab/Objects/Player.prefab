@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 1277412886572334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 4643324373621602}
   m_Father: {fileID: 0}
@@ -82,7 +82,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277412886572334}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -94,7 +94,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58524320187928160
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -159,7 +159,7 @@ MonoBehaviour:
   bulletTimer: 0
   speed: 5
   doubleSpeed: 0
-  doubleMissale: 0
+  doubleMissile: 0
   onShield: 0
   shieldEffect: {fileID: 1067614834001038}
   curHp: 1

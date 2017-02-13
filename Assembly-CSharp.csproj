@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Ai\BulletAi.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPattern01.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPattern02.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternBoss01.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternParent.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyBodySet.cs" />
@@ -58,7 +59,6 @@
      <Compile Include="Assets\Scripts\Controller\MainMenuButtonController.cs" />
      <Compile Include="Assets\Scripts\Controller\PausePopUpController.cs" />
      <Compile Include="Assets\Scripts\Controller\ResultPopUpController.cs" />
-     <Compile Include="Assets\Scripts\Controller\ScoreController.cs" />
      <Compile Include="Assets\Scripts\DestroyArea.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Font\FontInfo.cs" />
@@ -74,9 +74,10 @@
      <Compile Include="Assets\Scripts\Movement\BackGround.cs" />
      <Compile Include="Assets\Scripts\Movement\ObjectMoving.cs" />
      <Compile Include="Assets\Scripts\Movement\Player.cs" />
-     <None Include="Assets\stg_basic_pics\document_and_picturelist\readme.txt" />
-     <None Include="Assets\enemypack001sepia\document_and_picturelist\readme.txt" />
-     <None Include="Assets\spritefont_and_other\document_and_picturelist\readme.txt" />
+     <Compile Include="Assets\Scripts\ScoreModel.cs" />
+     <None Include="Assets\Asset\stg_basic_pics\document_and_picturelist\readme.txt" />
+     <None Include="Assets\Asset\enemypack001sepia\document_and_picturelist\readme.txt" />
+     <None Include="Assets\Asset\spritefont_and_other\document_and_picturelist\readme.txt" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>

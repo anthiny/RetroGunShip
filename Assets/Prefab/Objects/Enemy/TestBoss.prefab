@@ -52,7 +52,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425987794623468}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58293335857030268
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2
   target: {fileID: 1277412886572334, guid: da517346eec4a4b388507f87419d7d0d, type: 2}
+  checkPoint: 0
 --- !u!114 &114576512325599962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,9 +125,11 @@ MonoBehaviour:
   score: 500
   itemList:
   - {fileID: 151516, guid: f9d51200e4e99b540929acb5d27a6d6f, type: 2}
+  - {fileID: 1118887074227566, guid: de73f7afdb8da4520972916b5a9117b9, type: 2}
   effectList:
   - {fileID: 193854, guid: 5d0a772d6c97c384ab1272aa7554ea27, type: 2}
   - {fileID: 139422, guid: b0c58804b6a5123429b01d07b4620cea, type: 2}
+  scorePre: {fileID: 1492679713055882, guid: d335bca40625a4886a86c06fdd63b79b, type: 2}
   attactPattern: {fileID: 114576512325599962}
   movePattern: {fileID: 114183760413894374}
 --- !u!212 &212229494475873086

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreController : MonoBehaviour {
-	private static ScoreController _instance = null;
+public class ScoreModel : MonoBehaviour {
+	private static ScoreModel _instance = null;
 	private int score = 0;
 	private float cnt = 0.0f;
 	private int maxScore = 0;
-	public Text scoreText;
 	public bool isGameStart = false;
 
 	void Update(){
@@ -16,26 +15,21 @@ public class ScoreController : MonoBehaviour {
 			cnt = cnt + Time.timeScale;
 		}
 	}
-	public static ScoreController instance{
+	public static ScoreModel instance{
 		get{
 			if(!_instance){
-				_instance = FindObjectOfType(typeof(ScoreController)) as ScoreController;
+				_instance = FindObjectOfType(typeof(ScoreModel)) as ScoreModel;
 				if(!_instance){
 					GameObject container = new GameObject();
 					container.name = "ScoreModelContainer";
-					_instance = container.AddComponent(typeof(ScoreController)) as ScoreController;
+					_instance = container.AddComponent(typeof(ScoreModel)) as ScoreModel;
 				}
 			}
 			return _instance;
 		}
 	}
-
-	public void DisplayScore(){
-		scoreText.text = "Score: "+ score.ToString();
-	}
 	public void SetScore(int value){
 		score = value;
-		DisplayScore();
 	}
 	public int GetScore(){
 		return score;
@@ -56,6 +50,5 @@ public class ScoreController : MonoBehaviour {
 	
 	public void addScore(int value){
 		score = score + value;
-		DisplayScore();
 	}
 }

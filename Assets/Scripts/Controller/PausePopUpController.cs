@@ -13,7 +13,7 @@ public class PausePopUpController : MonoBehaviour {
 		this.gameObject.SetActive (false);
 	}
 	public void Pause(){
-		int bestScore = ScoreController.instance.getBestScore();
+		int bestScore = ScoreModel.instance.getBestScore();
 		bestScoreText.text = "Best Score : " + bestScore.ToString();
 		paused = !paused;
 	}

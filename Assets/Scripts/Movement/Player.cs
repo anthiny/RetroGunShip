@@ -162,7 +162,7 @@ public class Player : MonoBehaviour {
 	void Die(){
 		//Restart
 		SoundManager.instance.mainSwitch("inGameBackGround", false);
-		ScoreController.instance.SaveBestScore();
+		ScoreModel.instance.SaveBestScore();
 		PopUpManager.instance.ShowResultPopUp();
 	}
 
@@ -180,10 +180,10 @@ public class Player : MonoBehaviour {
 		if (doubleMissile){
 			GameObject leftBulletClone, rightBulletClone;
 			
-			leftBulletClone = Instantiate(bullet, new Vector3(transform.position.x - 0.32f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
+			leftBulletClone = Instantiate(bullet, new Vector3(transform.position.x - 0.23f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
 			leftBulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * 8;
 
-			rightBulletClone = Instantiate(bullet, new Vector3(transform.position.x + 0.35f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
+			rightBulletClone = Instantiate(bullet, new Vector3(transform.position.x + 0.25f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
 			rightBulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * 8;
 
 		}

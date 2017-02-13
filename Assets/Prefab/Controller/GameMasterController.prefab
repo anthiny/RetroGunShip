@@ -54,6 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 1
   spawnTimer: 0
+  bossScore: 1000
+  stageNum: 1
+  scoreText: {fileID: 0}
 --- !u!114 &114268548132045302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,5 +70,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 1143644511310466, guid: 2f8cd9fad33c84de8b57290c65ef45ad, type: 2}
+  - {fileID: 1263016547546298, guid: e25b530430011496e995a5dff64c7885, type: 2}
   enemyBossList:
   - {fileID: 1425987794623468, guid: 41a5e02f2e0d14403b8170c1d0fb5365, type: 2}
