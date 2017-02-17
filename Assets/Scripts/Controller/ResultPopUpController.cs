@@ -25,6 +25,7 @@ public class ResultPopUpController : MonoBehaviour {
 		bestScore.GetComponentInChildren<FontInfo>().FontLoad();
 	}
 	public void GoToMain(){
+		NetworkManager.instance.UploadScore(ScoreModel.instance.GetScore());
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
 	}
