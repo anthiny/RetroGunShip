@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{DD8BB6A4-7F54-B71D-E048-CD72D010D706}") = "RetroGunShip", "Assembly-CSharp.csproj", "{181A2387-F374-B19C-0DC1-6B66CE7BEF62}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetroGunShip", "Assembly-CSharp.csproj", "{181A2387-F374-B19C-0DC1-6B66CE7BEF62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
