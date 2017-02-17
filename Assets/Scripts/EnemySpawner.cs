@@ -7,10 +7,14 @@ public class EnemySpawner : MonoBehaviour {
 	private GameObject[] enemyList;
 	[SerializeField]
 	private GameObject[] enemyBossList;
-
+	private Vector2 min;
+	private Vector2 max;
+	void Start(){
+		min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+		max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+	}
 	public void SpawnEnemy(int level){
-		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-		Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+		
 		GameObject gameObjectClone;
 		switch(level){
 			case 1:
@@ -25,8 +29,6 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	public void SpawnEnemyBoss(int level){
-		Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-		Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 		switch(level){
 			case 1:
 				GameObject gameObjectClone = (GameObject)Instantiate(enemyBossList[0]);

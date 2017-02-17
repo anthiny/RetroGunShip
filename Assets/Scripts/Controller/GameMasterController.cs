@@ -8,8 +8,8 @@ public class GameMasterController : MonoBehaviour {
 	public float spawnTimer;
 	[SerializeField]
 	private int bossScore = 1000;
-	[SerializeField]
-	private int stageNum = 1;
+	//[SerializeField]
+	//private int stageNum = 1;
 	[SerializeField]
 	private Text scoreText;
 	private static GameMasterController _instance = null;
