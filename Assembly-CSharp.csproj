@@ -149,8 +149,10 @@
      <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePatternBoss01.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePatternParent.cs" />
      <Compile Include="Assets\Scripts\Controller\GameMasterController.cs" />
+     <Compile Include="Assets\Scripts\Controller\LeaderBoardController.cs" />
      <Compile Include="Assets\Scripts\Controller\MainMenuButtonController.cs" />
      <Compile Include="Assets\Scripts\Controller\PausePopUpController.cs" />
+     <Compile Include="Assets\Scripts\Controller\RankItemController.cs" />
      <Compile Include="Assets\Scripts\Controller\ResultPopUpController.cs" />
      <Compile Include="Assets\Scripts\DestroyArea.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />

@@ -7,6 +7,7 @@ using PlayFab.ClientModels;
 
 public class NetworkManager : MonoBehaviour {
 	private string Id;
+	private Dictionary<string, string> rankingData = new Dictionary<string, string>();
 	private static NetworkManager _instance = null;
 	public static NetworkManager instance{
 		get{
@@ -30,6 +31,18 @@ public class NetworkManager : MonoBehaviour {
 		return Id;
 	}
 
+	public Dictionary<string, string> GetRankingData()
+	{
+		return rankingData;
+	}
+	public bool IsRankingDataNull(){
+		if(rankingData == null){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public void Login(Action onSuccess, Action onFailure){
 		if(PlayFabClientAPI.IsClientLoggedIn())
 		{
@@ -98,7 +111,7 @@ public class NetworkManager : MonoBehaviour {
 		Debug.Log(error);
 	}
 
-	public void GetLeaderBoardData(){
+	public void GetLeaderBoardData(Action onSuccess, Action onFailure){
 		Debug.Log("Try to get LeaderBoard Data");
 
 		GetLeaderboardRequest request = new GetLeaderboardRequest(){
@@ -108,17 +121,23 @@ public class NetworkManager : MonoBehaviour {
 		};
 
 		PlayFabClientAPI.GetLeaderboard(request, 
-			(result) => {GetLeaderboardSuccess(result);},
-			(error) => {GetLeaderboardFail(error);}
+			(result) => {GetLeaderboardSuccess(onSuccess, result);},
+			(error) => {GetLeaderboardFail(onFailure, error);}
 		);
 	}
 
-	private void GetLeaderboardSuccess(GetLeaderboardResult result){
+	private void GetLeaderboardSuccess(Action onSuccess, GetLeaderboardResult result){
 		Debug.Log("GetLeaderboard data Success");
-		Debug.Log(result);
+		rankingData.Clear();
+		foreach(var data in result.Leaderboard){
+			Debug.Log(data.DisplayName+ "/" + data.StatValue);
+			rankingData.Add(data.PlayFabId, data.StatValue.ToString());
+		}
+		onSuccess();
 	}
 
-	private void GetLeaderboardFail(PlayFabError error){
+	private void GetLeaderboardFail(Action onFailure, PlayFabError error){
 		Debug.Log(error);
+		onFailure();
 	}
 }

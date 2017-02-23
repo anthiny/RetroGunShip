@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuButtonController : MonoBehaviour {
-	public Text checkId;
+	public GameObject leaderBoardPopUp;
 	void Start(){
-		checkId .text = "Loging...";
 		NetworkManager.instance.Login(LoginSuccess, LoginFail);
 	}
 	public void StartButton(){
@@ -20,15 +19,22 @@ public class MainMenuButtonController : MonoBehaviour {
 	}
 
 	public void ShowLeaderBoardButton(){
-		NetworkManager.instance.GetLeaderBoardData();
+		NetworkManager.instance.GetLeaderBoardData(GetLeaderBoardDataSuccess, GetLeaderBoardDataFail);
 	}
 
 	private void LoginSuccess(){
 		Debug.Log("LoginSuccess");
-		checkId.text = NetworkManager.instance.getId();
 	}
 	private void LoginFail(){
 		Debug.Log("LoginFail");
-		checkId.text = "Fail";
+	}
+	private void GetLeaderBoardDataSuccess(){
+		Debug.Log("LeaderBoardOpen");
+		leaderBoardPopUp.SetActive(true);
+		leaderBoardPopUp.GetComponent<LeaderBoardController>().SettingBoard();
+	}
+
+	private void GetLeaderBoardDataFail(){
+
 	}
 }
