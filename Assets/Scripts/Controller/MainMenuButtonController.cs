@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MainMenuButtonController : MonoBehaviour {
 	public GameObject leaderBoardPopUp;
 	void Start(){
-		NetworkManager.instance.Login(LoginSuccess, LoginFail);
+		Time.timeScale = 1;
 	}
 	public void StartButton(){
 		SoundManager.instance.mainSwitch("mainMenu", false);
@@ -19,12 +19,13 @@ public class MainMenuButtonController : MonoBehaviour {
 	}
 
 	public void ShowLeaderBoardButton(){
+		NetworkManager.instance.Login(CallGetLeaderBoardApi, LoginFail);
+	}
+
+	private void CallGetLeaderBoardApi(){
 		NetworkManager.instance.GetLeaderBoardData(GetLeaderBoardDataSuccess, GetLeaderBoardDataFail);
 	}
 
-	private void LoginSuccess(){
-		Debug.Log("LoginSuccess");
-	}
 	private void LoginFail(){
 		Debug.Log("LoginFail");
 	}

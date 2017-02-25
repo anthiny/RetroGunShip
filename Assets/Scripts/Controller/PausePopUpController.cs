@@ -5,16 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PausePopUpController : MonoBehaviour {
-	public Text bestScoreText;
+	public Text ScoreText;
 	public bool paused = false;
 
 	void Start(){
-		bestScoreText.text = "Best Score : 0";
+		ScoreText.text = "Score : 0";
 		this.gameObject.SetActive (false);
 	}
 	public void Pause(){
-		int bestScore = ScoreModel.instance.getBestScore();
-		bestScoreText.text = "Best Score : " + bestScore.ToString();
+		ScoreText.text = "Score : " + ScoreModel.instance.GetScore().ToString();
 		paused = !paused;
 	}
 	public void Resume(){

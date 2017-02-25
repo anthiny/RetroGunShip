@@ -6,7 +6,8 @@ using PlayFab;
 using PlayFab.ClientModels;
 
 public class NetworkManager : MonoBehaviour {
-	private string Id;
+	private string Id = "";
+	private string nickName = "";
 	private Dictionary<string, string> rankingData = new Dictionary<string, string>();
 	private static NetworkManager _instance = null;
 	public static NetworkManager instance{
@@ -31,12 +32,16 @@ public class NetworkManager : MonoBehaviour {
 		return Id;
 	}
 
+	public string getNickName(){
+		return nickName;
+	}
+
 	public Dictionary<string, string> GetRankingData()
 	{
 		return rankingData;
 	}
 	public bool IsRankingDataNull(){
-		if(rankingData == null){
+		if(rankingData.Count == 0){
 			return true;
 		}
 		else{
@@ -52,12 +57,19 @@ public class NetworkManager : MonoBehaviour {
 		}
 
 		Debug.Log("Try to NetworkManager.Login");
+		GetPlayerCombinedInfoRequestParams parameters = new GetPlayerCombinedInfoRequestParams(){
+			GetUserAccountInfo = true
+		};
+
 		LoginWithAndroidDeviceIDRequest request = new LoginWithAndroidDeviceIDRequest(){
 			TitleId = PlayFabSettings.TitleId,
 			CreateAccount = true,
+			
 			AndroidDeviceId = SystemInfo.deviceUniqueIdentifier,
 			AndroidDevice = SystemInfo.deviceModel,
 			OS = SystemInfo.operatingSystem,
+			InfoRequestParameters = parameters
+			
 		};
 
 		PlayFabClientAPI.LoginWithAndroidDeviceID(request, 
@@ -70,7 +82,9 @@ public class NetworkManager : MonoBehaviour {
 	{
 		Debug.Log("NetworkManager.OnLogin");
 		Debug.Log("   >>>>>> id: " + result.PlayFabId);
+		Debug.Log("   >>>>>> DisplayName " + result.InfoResultPayload.AccountInfo.TitleInfo.DisplayName);
 		Id = result.PlayFabId;
+		nickName = result.InfoResultPayload.AccountInfo.TitleInfo.DisplayName;
 		onSuccess();
 	}
 
@@ -82,7 +96,7 @@ public class NetworkManager : MonoBehaviour {
 		onFailure();
 	}
 
-	public void UploadScore(int score){
+	public void UploadScore(Action onSuccess, Action onFailure, int score){
 		Debug.Log("Try to UpLoading Score");
 		
 		List<StatisticUpdate> userStatistics = new List<StatisticUpdate>();
@@ -98,16 +112,17 @@ public class NetworkManager : MonoBehaviour {
 		};
 
 		PlayFabClientAPI.UpdatePlayerStatistics(request, 
-			(result) => {UploadSuccess(result);},
-			(error) => {UploadFail(error);}
+			(result) => {UploadSuccess(onSuccess, result);},
+			(error) => {UploadFail(onFailure, error);}
 		);
 	}
 
-	private void UploadSuccess(UpdatePlayerStatisticsResult updatePlayerStatisticsResult){
+	private void UploadSuccess(Action onSuccess, UpdatePlayerStatisticsResult updatePlayerStatisticsResult){
 		Debug.Log("Uploading Success");
+		onSuccess();
 	}
 
-	private void UploadFail(PlayFabError error){
+	private void UploadFail(Action onFailure, PlayFabError error){
 		Debug.Log(error);
 	}
 
@@ -131,12 +146,36 @@ public class NetworkManager : MonoBehaviour {
 		rankingData.Clear();
 		foreach(var data in result.Leaderboard){
 			Debug.Log(data.DisplayName+ "/" + data.StatValue);
-			rankingData.Add(data.PlayFabId, data.StatValue.ToString());
+			rankingData.Add(data.DisplayName, data.StatValue.ToString());
 		}
 		onSuccess();
 	}
 
 	private void GetLeaderboardFail(Action onFailure, PlayFabError error){
+		Debug.Log(error);
+		onFailure();
+	}
+
+	public void UpdateNickName(Action onSuccess, Action onFailure, string nickName){
+		Debug.Log("Update Nick Name");
+		UpdateUserTitleDisplayNameRequest request = new UpdateUserTitleDisplayNameRequest(){
+			DisplayName = nickName
+		};
+
+		PlayFabClientAPI.UpdateUserTitleDisplayName(request, 
+			(result) => {UpdateNickNameSuccess(onSuccess, result);},
+			(error) => {UpdateNickNameFailure(onFailure, error);}
+		);
+			
+	}
+
+	private void UpdateNickNameSuccess(Action onSuccess, UpdateUserTitleDisplayNameResult result){
+		Debug.Log("UpdateNickName is Success");
+		nickName = result.DisplayName;
+		onSuccess();
+	}
+
+	private void UpdateNickNameFailure(Action onFailure, PlayFabError error){
 		Debug.Log(error);
 		onFailure();
 	}

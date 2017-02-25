@@ -9,6 +9,7 @@ public class LeaderBoardController : MonoBehaviour {
 	private Vector3 startPosition;
 	public Sprite[] rankingIconList;
 	public Color[] colorList;
+	public Text noRankingInfo;
 	void Start () {
 		this.gameObject.SetActive(false);
 	}
@@ -22,6 +23,8 @@ public class LeaderBoardController : MonoBehaviour {
 			Debug.Log("No Ranking Data!");
 			return;
 		}
+
+		noRankingInfo.enabled = false;
 	
 		foreach(var data in NetworkManager.instance.GetRankingData()){
 			GameObject rankItemParent = GameObject.Find("RankItems");
@@ -32,7 +35,7 @@ public class LeaderBoardController : MonoBehaviour {
 			rankItemClone.GetComponent<RankItemController>().SettingRankItem
 			(rankingIconList[idx], data.Key, data.Value, colorList[colorIdx]);
 			
-			clonePosition.y = clonePosition.y - 50f;
+			clonePosition.y = clonePosition.y - 60f;
 			idx = idx + 1;
 			if (colorIdx < 3){
 				colorIdx = colorIdx + 1;

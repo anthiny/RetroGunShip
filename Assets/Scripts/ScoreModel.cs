@@ -6,15 +6,8 @@ using UnityEngine.UI;
 public class ScoreModel : MonoBehaviour {
 	private static ScoreModel _instance = null;
 	private int score = 0;
-	private float cnt = 0.0f;
 	private int maxScore = 0;
-	public bool isGameStart = false;
 
-	void Update(){
-		if(isGameStart){
-			cnt = cnt + Time.timeScale;
-		}
-	}
 	public static ScoreModel instance{
 		get{
 			if(!_instance){
@@ -28,9 +21,7 @@ public class ScoreModel : MonoBehaviour {
 			return _instance;
 		}
 	}
-	public void SetScore(int value){
-		score = value;
-	}
+	
 	public int GetScore(){
 		return score;
 	}
