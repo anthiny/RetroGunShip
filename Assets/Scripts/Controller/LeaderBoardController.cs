@@ -10,6 +10,7 @@ public class LeaderBoardController : MonoBehaviour {
 	public Sprite[] rankingIconList;
 	public Color[] colorList;
 	public Text noRankingInfo;
+	public Text myRankingScore;
 	void Start () {
 		this.gameObject.SetActive(false);
 	}
@@ -25,7 +26,7 @@ public class LeaderBoardController : MonoBehaviour {
 		}
 
 		noRankingInfo.enabled = false;
-	
+
 		foreach(var data in NetworkManager.instance.GetRankingData()){
 			GameObject rankItemParent = GameObject.Find("RankItems");
 			GameObject rankItemClone = Instantiate(rankItem);
@@ -41,6 +42,8 @@ public class LeaderBoardController : MonoBehaviour {
 				colorIdx = colorIdx + 1;
 			}
 		}
+
+		myRankingScore.text = NetworkManager.instance.getScore();
 	}
 
 	public void Exit(){

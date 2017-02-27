@@ -15,12 +15,18 @@ public class InputNickNameController : MonoBehaviour {
 			Debug.Log("Check your InputBox!!!!!");
 			return;
 		}
-		//NetworkManager.instance.Login(LoginSuccess, LoginFail);
+		PopUpManager.instance.OverlaySwitch(true);
+		PopUpManager.instance.ChangeOverlayText("Add Nick Name ...");
 		NetworkManager.instance.UpdateNickName(UploadScore, ShowFailMessage, inputField.text);
+	}
+
+	public void CancelButton(){
+		this.gameObject.SetActive(false);
 	}
 	private void UploadScore(){
 		Debug.Log("Uploading Score!!!");
-		NetworkManager.instance.UploadScore(ShowSuccseeMessage, ShowFailMessage, ScoreModel.instance.GetScore());
+		PopUpManager.instance.ChangeOverlayText("UpLoading Score...");
+		NetworkManager.instance.UploadScore(ShowSuccessMessage, ShowFailMessage, ScoreModel.instance.GetScore());
 	}
 	private bool CheckInputBox(){
 		if(inputField.text.Length > 0){
@@ -30,13 +36,17 @@ public class InputNickNameController : MonoBehaviour {
 			return false;
 		}
 	}
-	private void ShowSuccseeMessage(){
+	private void ShowSuccessMessage(){
+		PopUpManager.instance.ChangeOverlayText("Success");
 		this.gameObject.SetActive(false);
+		PopUpManager.instance.OverlaySwitch(false);
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
 	}
 	private void ShowFailMessage(){
 		Debug.Log("fail!");
+		PopUpManager.instance.ChangeOverlayText("Error !");
+		PopUpManager.instance.OverlaySwitch(false);
 		this.gameObject.SetActive(false);
 	}
 }

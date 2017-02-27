@@ -8,6 +8,7 @@ using PlayFab.ClientModels;
 public class NetworkManager : MonoBehaviour {
 	private string Id = "";
 	private string nickName = "";
+	private string score = "-";
 	private Dictionary<string, string> rankingData = new Dictionary<string, string>();
 	private static NetworkManager _instance = null;
 	public static NetworkManager instance{
@@ -30,6 +31,10 @@ public class NetworkManager : MonoBehaviour {
 	
 	public string getId(){
 		return Id;
+	}
+
+	public string getScore(){
+		return score;
 	}
 
 	public string getNickName(){
@@ -132,7 +137,7 @@ public class NetworkManager : MonoBehaviour {
 		GetLeaderboardRequest request = new GetLeaderboardRequest(){
 			StatisticName = "HighScore",
 			StartPosition = 0,
-			MaxResultsCount = 10
+			MaxResultsCount = 5
 		};
 
 		PlayFabClientAPI.GetLeaderboard(request, 
@@ -146,6 +151,9 @@ public class NetworkManager : MonoBehaviour {
 		rankingData.Clear();
 		foreach(var data in result.Leaderboard){
 			Debug.Log(data.DisplayName+ "/" + data.StatValue);
+			if(data.PlayFabId == Id){
+				score = data.StatValue.ToString();
+			}
 			rankingData.Add(data.DisplayName, data.StatValue.ToString());
 		}
 		onSuccess();
@@ -178,5 +186,15 @@ public class NetworkManager : MonoBehaviour {
 	private void UpdateNickNameFailure(Action onFailure, PlayFabError error){
 		Debug.Log(error);
 		onFailure();
+	}
+
+	public bool LoginCheck(){
+		if(PlayFabClientAPI.IsClientLoggedIn())
+		{
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

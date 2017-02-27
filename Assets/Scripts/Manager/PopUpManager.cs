@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopUpManager : MonoBehaviour {
 	public GameObject[] PopUpList;
@@ -39,4 +40,15 @@ public class PopUpManager : MonoBehaviour {
 		PopUpList[1].SetActive(true);
 	}
 	
+	public void ShowInputNickNamePopUp(){
+		PopUpList[2].SetActive(true);
+	}
+
+	public void OverlaySwitch(bool value){
+		PopUpList[3].SetActive(value);
+	}
+
+	public void ChangeOverlayText(string text){
+		PopUpList[3].transform.GetChild(0).gameObject.GetComponent<Text>().text = text;
+	}
 }

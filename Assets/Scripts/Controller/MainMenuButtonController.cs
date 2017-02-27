@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class MainMenuButtonController : MonoBehaviour {
 	public GameObject leaderBoardPopUp;
+	public GameObject loadingOverlay;
 	void Start(){
 		Time.timeScale = 1;
+		OverlaySwitch(false);
 	}
 	public void StartButton(){
 		SoundManager.instance.mainSwitch("mainMenu", false);
@@ -19,6 +21,7 @@ public class MainMenuButtonController : MonoBehaviour {
 	}
 
 	public void ShowLeaderBoardButton(){
+		OverlaySwitch(true);
 		NetworkManager.instance.Login(CallGetLeaderBoardApi, LoginFail);
 	}
 
@@ -27,15 +30,22 @@ public class MainMenuButtonController : MonoBehaviour {
 	}
 
 	private void LoginFail(){
+		OverlaySwitch(false);
 		Debug.Log("LoginFail");
 	}
 	private void GetLeaderBoardDataSuccess(){
 		Debug.Log("LeaderBoardOpen");
+		OverlaySwitch(false);
 		leaderBoardPopUp.SetActive(true);
 		leaderBoardPopUp.GetComponent<LeaderBoardController>().SettingBoard();
 	}
 
-	private void GetLeaderBoardDataFail(){
+	private void OverlaySwitch(bool value){
+		loadingOverlay.SetActive(value);
+	}
 
+	private void GetLeaderBoardDataFail(){
+		OverlaySwitch(false);
+		Debug.Log("GetLeaderBoardDataFail");
 	}
 }
