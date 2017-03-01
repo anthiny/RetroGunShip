@@ -95,10 +95,9 @@ public class NetworkManager : MonoBehaviour {
 
 	private void OnFailedLogin(Action onFailure, PlayFabError error)
 	{
-		Debug.Log(error.ErrorMessage);
+		Debug.Log(error.Error);
 		if(onFailure != null)
 			onFailure.Invoke();
-		onFailure();
 	}
 
 	public void UploadScore(Action onSuccess, Action onFailure, int score){
@@ -129,6 +128,7 @@ public class NetworkManager : MonoBehaviour {
 
 	private void UploadFail(Action onFailure, PlayFabError error){
 		Debug.Log(error);
+		onFailure();
 	}
 
 	public void GetLeaderBoardData(Action onSuccess, Action onFailure){
@@ -164,7 +164,7 @@ public class NetworkManager : MonoBehaviour {
 		onFailure();
 	}
 
-	public void UpdateNickName(Action onSuccess, Action onFailure, string nickName){
+	public void UpdateNickName(Action onSuccess, Action<string> onFailure, string nickName){
 		Debug.Log("Update Nick Name");
 		UpdateUserTitleDisplayNameRequest request = new UpdateUserTitleDisplayNameRequest(){
 			DisplayName = nickName
@@ -183,9 +183,9 @@ public class NetworkManager : MonoBehaviour {
 		onSuccess();
 	}
 
-	private void UpdateNickNameFailure(Action onFailure, PlayFabError error){
+	private void UpdateNickNameFailure(Action<string> onFailure, PlayFabError error){
 		Debug.Log(error);
-		onFailure();
+		onFailure(error.Error.ToString());
 	}
 
 	public bool LoginCheck(){

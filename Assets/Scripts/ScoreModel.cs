@@ -26,16 +26,16 @@ public class ScoreModel : MonoBehaviour {
 		return score;
 	}
 
-	public void SaveBestScore(){
+	/*public void SaveBestScore(){
 		maxScore = PlayerPrefs.GetInt("MaxScore");
 		if (maxScore < score){
 			PlayerPrefs.SetInt("MaxScore", score);
 			maxScore = PlayerPrefs.GetInt("MaxScore");
 		}
-	}
+	}*/
 
 	public int getBestScore(){
-		SaveBestScore();
+		//SaveBestScore();
 		return maxScore;
 	}
 	

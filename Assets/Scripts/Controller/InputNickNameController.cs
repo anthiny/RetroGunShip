@@ -11,13 +11,14 @@ public class InputNickNameController : MonoBehaviour {
 		this.gameObject.SetActive(false);
 	}
 	public void AddNickName(){
-		if(!CheckInputBox()){
+		if(string.IsNullOrEmpty(inputField.text)){
 			Debug.Log("Check your InputBox!!!!!");
+			ErrorHandleManager.instance.CreateErrorPopUp("Plz Input at least 1 char");
 			return;
 		}
 		PopUpManager.instance.OverlaySwitch(true);
 		PopUpManager.instance.ChangeOverlayText("Add Nick Name ...");
-		NetworkManager.instance.UpdateNickName(UploadScore, ShowFailMessage, inputField.text);
+		NetworkManager.instance.UpdateNickName(UploadScore, ShowAddNickNameFailMessage, inputField.text);
 	}
 
 	public void CancelButton(){
@@ -26,16 +27,9 @@ public class InputNickNameController : MonoBehaviour {
 	private void UploadScore(){
 		Debug.Log("Uploading Score!!!");
 		PopUpManager.instance.ChangeOverlayText("UpLoading Score...");
-		NetworkManager.instance.UploadScore(ShowSuccessMessage, ShowFailMessage, ScoreModel.instance.GetScore());
+		NetworkManager.instance.UploadScore(ShowSuccessMessage, ShowUploadingScoreFailMessage, ScoreModel.instance.GetScore());
 	}
-	private bool CheckInputBox(){
-		if(inputField.text.Length > 0){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
+
 	private void ShowSuccessMessage(){
 		PopUpManager.instance.ChangeOverlayText("Success");
 		this.gameObject.SetActive(false);
@@ -43,9 +37,22 @@ public class InputNickNameController : MonoBehaviour {
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
 	}
-	private void ShowFailMessage(){
-		Debug.Log("fail!");
-		PopUpManager.instance.ChangeOverlayText("Error !");
+	private void ShowAddNickNameFailMessage(string errorStauts){
+		Debug.Log("AddNickNameFail!");
+		inputField.text = "";
+		if (errorStauts.ToLower() != "namenotavailable"){
+			ErrorHandleManager.instance.CreateErrorPopUp("Add Nick Name Fail");	
+		}
+		else{
+			ErrorHandleManager.instance.CreateErrorPopUp(errorStauts);	
+		}
+		PopUpManager.instance.OverlaySwitch(false);
+		this.gameObject.SetActive(false);
+	}
+
+	private void ShowUploadingScoreFailMessage(){
+		Debug.Log("ScoreUpLoadingFail!");
+		ErrorHandleManager.instance.CreateErrorPopUp("Score UpLoading Fail");
 		PopUpManager.instance.OverlaySwitch(false);
 		this.gameObject.SetActive(false);
 	}

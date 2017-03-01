@@ -148,6 +148,8 @@
      <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePattern01.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePatternBoss01.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePatternParent.cs" />
+     <Compile Include="Assets\Scripts\Ai\Player.cs" />
+     <Compile Include="Assets\Scripts\Controller\ErrorPopUpContoller.cs" />
      <Compile Include="Assets\Scripts\Controller\GameMasterController.cs" />
      <Compile Include="Assets\Scripts\Controller\InputNickNameController.cs" />
      <Compile Include="Assets\Scripts\Controller\LeaderBoardController.cs" />
@@ -163,6 +165,7 @@
      <Compile Include="Assets\Scripts\Item\Shield.cs" />
      <Compile Include="Assets\Scripts\KillAnimation.cs" />
      <Compile Include="Assets\Scripts\Manager\DontDestroyOnLoad.cs" />
+     <Compile Include="Assets\Scripts\Manager\ErrorHandleManager.cs" />
      <Compile Include="Assets\Scripts\Manager\FontManager.cs" />
      <Compile Include="Assets\Scripts\Manager\ManagerSummoner.cs" />
      <Compile Include="Assets\Scripts\Manager\NetworkManager.cs" />
@@ -170,10 +173,10 @@
      <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Movement\BackGround.cs" />
      <Compile Include="Assets\Scripts\Movement\ObjectMoving.cs" />
-     <Compile Include="Assets\Scripts\Movement\Player.cs" />
      <Compile Include="Assets\Scripts\ScoreModel.cs" />
      <None Include="Assets\PlayFabSdk\link.xml" />
      <None Include="Assets\Asset\stg_basic_pics\document_and_picturelist\readme.txt" />
+     <None Include="Assets\Font\ReadMe.txt" />
      <None Include="Assets\Asset\enemypack001sepia\document_and_picturelist\readme.txt" />
      <None Include="Assets\Asset\spritefont_and_other\document_and_picturelist\readme.txt" />
  <Reference Include="UnityEngine.UI">

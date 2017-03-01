@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ResultPopUpController : MonoBehaviour {
@@ -18,11 +19,12 @@ public class ResultPopUpController : MonoBehaviour {
 		PopUpManager.instance.OverlaySwitch(false);
 	}
 	public void ShowScoreInfo(){
+		score.GetComponentInChildren<FontInfo>().text = "";
 		score.GetComponentInChildren<FontInfo>().text = (ScoreModel.instance.GetScore()).ToString();
 		score.GetComponentInChildren<FontInfo>().FontLoad();
 	}
 	public void GoToMain(){
-		PopUpManager.instance.ChangeOverlayText("Success!!!!");
+		PopUpManager.instance.ChangeOverlayText("Success...");
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
 	}
@@ -31,11 +33,13 @@ public class ResultPopUpController : MonoBehaviour {
 		Debug.Log("Try to check before upload");
 		if(NetworkManager.instance.LoginCheck())
 		{
-			if(NetworkManager.instance.getNickName() == null){
+			if(string.IsNullOrEmpty(NetworkManager.instance.getNickName())){
+				Debug.Log("Show Input NickName PopUp!");
 				PopUpManager.instance.OverlaySwitch(false);
 				PopUpManager.instance.ShowInputNickNamePopUp();
 			}
 			else{
+				Debug.Log("CallSocreUpLoadApi");
 				PopUpManager.instance.OverlaySwitch(true);
 				CallSocreUpLoadApi();
 			}
@@ -48,14 +52,16 @@ public class ResultPopUpController : MonoBehaviour {
 	}
 	private void CallSocreUpLoadApi(){
 		PopUpManager.instance.ChangeOverlayText("UpLoading Score...");
-		NetworkManager.instance.UploadScore(GoToMain, ShowSocreUpFailMessage, ScoreModel.instance.GetScore());
+		NetworkManager.instance.UploadScore(GoToMain, ShowSocreUpLoadingFailMessage, ScoreModel.instance.GetScore());
 	}
 
 	private void ShowLoginFailMessage(){
 		PopUpManager.instance.OverlaySwitch(false);
+		ErrorHandleManager.instance.CreateErrorPopUp("Login Fail");
 	}
 
-	private void ShowSocreUpFailMessage(){
+	private void ShowSocreUpLoadingFailMessage(){
 		PopUpManager.instance.OverlaySwitch(false);
+		ErrorHandleManager.instance.CreateErrorPopUp("Score UpLoading Fail");
 	}
 }

@@ -9,11 +9,11 @@ public class PausePopUpController : MonoBehaviour {
 	public bool paused = false;
 
 	void Start(){
-		ScoreText.text = "Score : 0";
+		ScoreText.text = "Score 0";
 		this.gameObject.SetActive (false);
 	}
 	public void Pause(){
-		ScoreText.text = "Score : " + ScoreModel.instance.GetScore().ToString();
+		ScoreText.text = "Score " + ScoreModel.instance.GetScore().ToString();
 		paused = !paused;
 	}
 	public void Resume(){

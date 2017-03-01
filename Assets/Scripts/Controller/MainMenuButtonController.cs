@@ -31,12 +31,13 @@ public class MainMenuButtonController : MonoBehaviour {
 
 	private void LoginFail(){
 		OverlaySwitch(false);
+		ErrorHandleManager.instance.CreateErrorPopUp("Login Fail");
 		Debug.Log("LoginFail");
 	}
 	private void GetLeaderBoardDataSuccess(){
 		Debug.Log("LeaderBoardOpen");
 		OverlaySwitch(false);
-		leaderBoardPopUp.SetActive(true);
+		leaderBoardPopUp.gameObject.SetActive(true);
 		leaderBoardPopUp.GetComponent<LeaderBoardController>().SettingBoard();
 	}
 
@@ -46,6 +47,7 @@ public class MainMenuButtonController : MonoBehaviour {
 
 	private void GetLeaderBoardDataFail(){
 		OverlaySwitch(false);
+		ErrorHandleManager.instance.CreateErrorPopUp("Get LeaderBoard Data Fail");
 		Debug.Log("GetLeaderBoardDataFail");
 	}
 }

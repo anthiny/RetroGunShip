@@ -45,7 +45,7 @@ public class GameMasterController : MonoBehaviour {
 	}
 
 	public void DisplayScoreText(){
-		scoreText.text = "Score: " + ScoreModel.instance.GetScore().ToString();
+		scoreText.text = "Score " + ScoreModel.instance.GetScore().ToString();
 	}
 
 }

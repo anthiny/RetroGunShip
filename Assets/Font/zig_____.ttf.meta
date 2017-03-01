@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: da4c7d025b493467db1ade67cb0a49f6
+timeCreated: 1488346175
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zig
+  fontNames:
+  - Zig
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -162,7 +162,7 @@ public class Player : MonoBehaviour {
 	void Die(){
 		//Restart
 		SoundManager.instance.mainSwitch("inGameBackGround", false);
-		ScoreModel.instance.SaveBestScore();
+		//ScoreModel.instance.SaveBestScore();
 		PopUpManager.instance.ShowResultPopUp();
 	}
 
