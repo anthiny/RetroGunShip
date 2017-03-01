@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class ResultPopUpController : MonoBehaviour {
@@ -25,6 +25,10 @@ public class ResultPopUpController : MonoBehaviour {
 	}
 	public void GoToMain(){
 		PopUpManager.instance.ChangeOverlayText("Success...");
+		if (Advertisement.IsReady())
+    	{
+      		Advertisement.Show();
+    	}
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
 	}

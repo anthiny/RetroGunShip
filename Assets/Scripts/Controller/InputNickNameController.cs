@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement; 
 
 public class InputNickNameController : MonoBehaviour {
@@ -34,6 +35,10 @@ public class InputNickNameController : MonoBehaviour {
 		PopUpManager.instance.ChangeOverlayText("Success");
 		this.gameObject.SetActive(false);
 		PopUpManager.instance.OverlaySwitch(false);
+		if (Advertisement.IsReady())
+    	{
+      		Advertisement.Show();
+    	}
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
 	}
