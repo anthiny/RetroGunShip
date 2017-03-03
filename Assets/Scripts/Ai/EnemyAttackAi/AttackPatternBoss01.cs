@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackPatternBoss01 : AttackPatternParent {
 	public GameObject target;
 	void Start(){
+		bulletGameObjectParent = GameObject.Find("BulletPooling");
 		target = GameObject.FindGameObjectWithTag("Player");
 	}
 	override protected void Pattern(){
@@ -12,7 +13,8 @@ public class AttackPatternBoss01 : AttackPatternParent {
 		direction.Normalize();
 
 		GameObject bulletClone;
-		bulletClone = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+		bulletClone = Instantiate(bullet, transform.position + muzzle, transform.rotation) as GameObject;
+		bulletClone.transform.SetParent(bulletGameObjectParent.transform, false);
 		bulletClone.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 	}
 }

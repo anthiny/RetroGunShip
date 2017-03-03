@@ -34,7 +34,7 @@ public class GameMasterController : MonoBehaviour {
 		spawnTimer = spawnTimer + Time.deltaTime;
 		if(spawnTimer >= spawnInterval){
 			if(ScoreModel.instance.GetScore()>=bossScore){
-				this.GetComponent<EnemySpawner>().SpawnEnemyBoss(1);
+				this.GetComponent<EnemySpawner>().SpawnEnemyBoss(Random.Range(1,3));
 				bossScore = bossScore*3;
 			}
 			else{

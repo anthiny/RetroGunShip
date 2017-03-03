@@ -29,9 +29,14 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	public void SpawnEnemyBoss(int level){
+		GameObject gameObjectClone;
 		switch(level){
 			case 1:
-				GameObject gameObjectClone = (GameObject)Instantiate(enemyBossList[0]);
+				gameObjectClone = (GameObject)Instantiate(enemyBossList[0]);
+				gameObjectClone.transform.position = new Vector2(0, max.y);
+				break;
+			case 2:
+				gameObjectClone = (GameObject)Instantiate(enemyBossList[1]);
 				gameObjectClone.transform.position = new Vector2(0, max.y);
 				break;
 		}

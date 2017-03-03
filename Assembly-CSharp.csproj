@@ -143,6 +143,7 @@
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPattern01.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPattern02.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternBoss01.cs" />
+     <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternBoss02.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyAttackAi\AttackPatternParent.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyBodySet.cs" />
      <Compile Include="Assets\Scripts\Ai\EnemyMoveAi\MovePattern01.cs" />

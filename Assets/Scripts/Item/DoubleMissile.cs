@@ -9,7 +9,7 @@ public class DoubleMissile : MonoBehaviour {
 		string tagName = c.gameObject.tag;
 		if (tagName == "Player")
 		{
-			c.gameObject.GetComponent<Player>().doubleMissile = true;
+			c.gameObject.GetComponent<Player>().MissileUpgrade();
 			Destroy(this.gameObject);
 		}
 	} 

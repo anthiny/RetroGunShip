@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e82342562204731a11977b3321fb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 0.5
-  bulletSpeed: 100
+  shootInterval: 0.25
+  bulletSpeed: 10
   bulletTimer: 0
-  speed: 5
+  speed: 8
   doubleSpeed: 0
   doubleMissile: 0
   onShield: 0

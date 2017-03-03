@@ -10,17 +10,20 @@ public class Player : MonoBehaviour {
 	public float bulletTimer;
 	public float speed = 0.1f;
 	public bool doubleSpeed = false;
-	public bool doubleMissile = false;
+	[SerializeField]
+	private bool doubleMissile = false;
 	[SerializeField]
 	private bool onShield = false;
 	public GameObject shieldEffect;
 	public int curHp = 5;
 	public GameObject bullet;
+	public GameObject bulletGameObjectParent;
 	private Animator animator;
 	private bool isLeft;
 	private bool isRight;
 	// Use this for initialization
 	void Start () {
+		bulletGameObjectParent = GameObject.Find("BulletPooling");
 		shieldEffect.SetActive(false);
 		animator = gameObject.GetComponent<Animator>();
 	}
@@ -46,16 +49,11 @@ public class Player : MonoBehaviour {
 					if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved){
 						
 						Vector3 target = Camera.main.ScreenToWorldPoint(touch.position);
+						target.y = target.y + 0.6f;
 						target.z = 0;
 
-						if (!TouchCheck(target)){
-							isLeft = false;
-							isRight = false;
-							gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0, 0);
-							return;
-						}
-
 						direction = target - transform.position;
+						var distance = direction.magnitude;
 						direction.Normalize();
 						
 						if(target.x > transform.position.x){
@@ -71,7 +69,7 @@ public class Player : MonoBehaviour {
 							isRight = false;
 						}
 
-						pos += direction  * speed * Time.deltaTime;
+						pos = pos + direction * Mathf.Min(distance, speed * Time.deltaTime);
 						pos.x = Mathf.Clamp (pos.x, min.x, max.x);
 						pos.y = Mathf.Clamp (pos.y, min.y, max.y);
 						transform.position = pos;
@@ -138,14 +136,6 @@ public class Player : MonoBehaviour {
 		transform.position = pos;
 	}
 
-	bool TouchCheck(Vector3 target){
-		if (Mathf.Abs(target.y - transform.position.y) > 0.3 || Mathf.Abs(target.x - transform.position.x) > 0.3){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
 	public void Damage(int damage){
 		animator.SetTrigger("Heat");
 		SoundManager.instance.mainSwitch("damagedSound", true);
@@ -181,22 +171,35 @@ public class Player : MonoBehaviour {
 			GameObject leftBulletClone, rightBulletClone;
 			
 			leftBulletClone = Instantiate(bullet, new Vector3(transform.position.x - 0.23f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
-			leftBulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * 8;
+			leftBulletClone.transform.SetParent(bulletGameObjectParent.transform, false);
+			leftBulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * bulletSpeed;
 
 			rightBulletClone = Instantiate(bullet, new Vector3(transform.position.x + 0.25f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
-			rightBulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * 8;
+			rightBulletClone.transform.SetParent(bulletGameObjectParent.transform, false);
+			rightBulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * bulletSpeed;
 
 		}
 		else{
 			GameObject bulletClone;
 			bulletClone = Instantiate(bullet, new Vector3(transform.position.x + 0.03f, transform.position.y + 0.06f, transform.position.z), transform.rotation) as GameObject;
-			bulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * 8;
+			bulletClone.transform.SetParent(bulletGameObjectParent.transform, false);
+			bulletClone.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * bulletSpeed;
 		}
 	}
-
+	public void MissileUpgrade(){
+		if(doubleMissile){
+			ScoreModel.instance.addScore(50);
+			return;
+		}
+		doubleMissile = true;
+	}
 	public void ShieldSwitch(bool value){
+		if(onShield){
+			ScoreModel.instance.addScore(50);
+			return;
+		}
 		onShield = value;
 		shieldEffect.SetActive(onShield);
 	}
-
+	
 }

@@ -27,7 +27,7 @@ public class ResultPopUpController : MonoBehaviour {
 		PopUpManager.instance.ChangeOverlayText("Success...");
 		if (Advertisement.IsReady())
     	{
-      		Advertisement.Show();
+      		//Advertisement.Show();
     	}
 		SceneManager.LoadScene(0);
 		SoundManager.instance.mainSwitch("mainMenu", true);
