@@ -38,7 +38,7 @@ public class GameMasterController : MonoBehaviour {
 				bossScore = bossScore*3;
 			}
 			else{
-				this.GetComponent<EnemySpawner>().SpawnEnemy(Random.Range(1,3));
+				this.GetComponent<EnemySpawner>().SpawnEnemy(Random.Range(0,4));
 			}
 			spawnTimer = 0;
 		}

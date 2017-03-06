@@ -68,7 +68,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 1143644511310466, guid: 2f8cd9fad33c84de8b57290c65ef45ad, type: 2}
+  - {fileID: 1155931864743080, guid: fbbfe1bc2fa084aba8ac9e3c1d674089, type: 2}
+  - {fileID: 1629938018184622, guid: 193d4e83fdac04f4f9a026e53711a700, type: 2}
+  - {fileID: 1708512484639886, guid: 88e3dbd907918483d9184585c201e9a3, type: 2}
   - {fileID: 1263016547546298, guid: e25b530430011496e995a5dff64c7885, type: 2}
   enemyBossList:
   - {fileID: 1425987794623468, guid: 41a5e02f2e0d14403b8170c1d0fb5365, type: 2}

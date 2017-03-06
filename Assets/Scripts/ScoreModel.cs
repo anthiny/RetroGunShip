@@ -26,19 +26,22 @@ public class ScoreModel : MonoBehaviour {
 		return score;
 	}
 
+#region SaveBestScore
 	/*public void SaveBestScore(){
 		maxScore = PlayerPrefs.GetInt("MaxScore");
 		if (maxScore < score){
 			PlayerPrefs.SetInt("MaxScore", score);
 			maxScore = PlayerPrefs.GetInt("MaxScore");
 		}
-	}*/
+	}
 
 	public int getBestScore(){
-		//SaveBestScore();
+		SaveBestScore();
 		return maxScore;
-	}
-	
+	}*/
+
+#endregion
+
 	public void addScore(int value){
 		score = score + value;
 	}

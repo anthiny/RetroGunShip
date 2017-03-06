@@ -16,7 +16,9 @@ public class EnemySpawner : MonoBehaviour {
 	public void SpawnEnemy(int level){
 		
 		GameObject gameObjectClone;
-		switch(level){
+		gameObjectClone = (GameObject)Instantiate(enemyList[level]);
+		gameObjectClone.transform.position = new Vector2(Random.Range (min.x, max.x), max.y);
+		/*switch(level){
 			case 1:
 				gameObjectClone = (GameObject)Instantiate(enemyList[0]);
 				gameObjectClone.transform.position = new Vector2(Random.Range (min.x, max.x), max.y);
@@ -25,7 +27,7 @@ public class EnemySpawner : MonoBehaviour {
 				gameObjectClone = (GameObject)Instantiate(enemyList[1]);
 				gameObjectClone.transform.position = new Vector2(Random.Range (min.x, max.x), max.y);
 				break;
-		}
+		}*/
 	}
 
 	public void SpawnEnemyBoss(int level){

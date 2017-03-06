@@ -194,7 +194,7 @@ public class Player : MonoBehaviour {
 		doubleMissile = true;
 	}
 	public void ShieldSwitch(bool value){
-		if(onShield){
+		if(onShield == true && value == true){
 			ScoreModel.instance.addScore(50);
 			return;
 		}
